@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quantum Brawl - Game Launcher</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Quantum Brawl - Game Launcher</h1>
+    <div class="menu">
+        <button onclick="startGame()">Start Game</button>
+        <button onclick="connectMultiplayer()">Multiplayer</button>
+        <button onclick="showSettings()">Settings</button>
+    </div>
+
+    <div id="file-list">
+        <h2>Game Files</h2>
+        <ul>
+            <li><a href="../Energyshield.shader" download>Energy Shield Shader</a></li>
+            <li><a href="../playercontroller.cs" download>Player Controller (C#)</a></li>
+            <li><a href="../server.js" download>Multiplayer Server (Node.js)</a></li>
+        </ul>
+    </div>
+
+    <script src="menu.js"></script>
+</body>
+</html>
