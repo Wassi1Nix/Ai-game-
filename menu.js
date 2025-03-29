@@ -1,33 +1,28 @@
-const WebSocket = require('ws');
+// Connect to WebSocket server
+const socket = new WebSocket('localhost:8080');
 
-const server = new WebSocket.Server({ port: 8080 });
-let players = {};
+// When connected
+socket.onopen = () => {
+    console.log("Connected to WebSocket server.");
+};
 
-server.on('connection', ws => {
-    ws.on('message', message => {
-        let data = JSON.parse(message);
-        
-        if (data.type === 'join') {
-            players[data.id] = ws;
-            console.log(`Player ${data.id} connected.`);
-        }
+// When receiving a message
+socket.onmessage = (event) => {
+    let data = JSON.parse(event.data);
+    console.log("Received:", data);
+};
 
-        if (data.type === 'move') {
-            broadcast(data);
-        }
-    });
+// When connection closes
+socket.onclose = () => {
+    console.log("Disconnected from WebSocket server.");
+};
 
-    ws.on('close', () => {
-        let playerId = Object.keys(players).find(id => players[id] === ws);
-        delete players[playerId];
-        console.log(`Player ${playerId} disconnected.`);
-    });
-});
+// When an error occurs
+socket.onerror = (error) => {
+    console.error("WebSocket error:", error);
+};
 
-function broadcast(data) {
-    Object.values(players).forEach(player => {
-        player.send(JSON.stringify(data));
-    });
+// Function to send a message
+function sendMessage(type, id) {
+    socket.send(JSON.stringify({ type, id }));
 }
-
-console.log("Multiplayer server running on ws://localhost:8080");
