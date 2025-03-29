@@ -1,0 +1,47 @@
+body {
+    text-align: center;
+    background: black;
+    color: white;
+    font-family: Arial, sans-serif;
+}
+
+.menu {
+    margin-top: 50px;
+}
+
+button {
+    display: block;
+    margin: 10px auto;
+    padding: 15px;
+    width: 200px;
+    background: cyan;
+    border: none;
+    color: black;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: white;
+}
+
+#file-list {
+    margin-top: 30px;
+}
+
+#file-list ul {
+    list-style-type: none;
+}
+
+#file-list li {
+    margin: 5px 0;
+}
+
+#file-list a {
+    color: cyan;
+    text-decoration: none;
+}
+
+#file-list a:hover {
+    text-decoration: underline;
+}
